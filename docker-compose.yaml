@@ -1,0 +1,36 @@
+services:
+  db:
+    hostname: postgres
+    container_name: db
+    image: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  test-db:
+    hostname: test-postgres
+    container_name: test-db
+    image: postgres
+    volumes:
+      - ./test_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: postgres
+    ports:
+      - "999:5432" # expose port 999 to connect to test db
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env

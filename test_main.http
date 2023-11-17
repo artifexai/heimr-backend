@@ -1,0 +1,28 @@
+
+### get all listings
+GET http://127.0.0.1:8000/listings
+Accept: application/json
+
+
+### get permits for a listing
+GET http://127.0.0.1:8000/permits/22204474
+Accept: application/json
+
+
+### get tax for a listing
+GET http://127.0.0.1:8000/tax/22204474
+Accept: application/json
+
+### test search properties
+GET https://127.0.0.1:5000/properties?q=boston
+Accept: application/json
+
+
+### test default properties
+GET http://127.0.0.1:8000/properties
+Accept: application/json
+
+
+### test tax endpoint
+GET http://127.0.0.1:8000/tax/4543972881
+Accept: application/json
